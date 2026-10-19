@@ -142,3 +142,33 @@
     color: var(--color-foreground);
   }
 }
+
+/* Hand Seal Dojo */
+:root { --dojo-bg: oklch(0.17 0.015 40); --dojo-card: oklch(0.23 0.02 40); --dojo-fg: oklch(0.96 0.01 80); --dojo-muted: oklch(0.75 0.02 70); --dojo-accent: oklch(0.78 0.16 75); --dojo-err: oklch(0.72 0.17 25); }
+.dojo { min-height: 100vh; display: grid; place-items: center; padding: 1rem; background: var(--dojo-bg); color: var(--dojo-fg); font-family: Georgia, serif; }
+.dojo-card { width: 100%; max-width: 32rem; background: var(--dojo-card); border: 1px solid oklch(1 0 0 / 12%); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+.dojo-head { display: flex; justify-content: space-between; align-items: center; gap: .5rem; }
+.dojo h1 { font-size: 1.75rem; font-weight: 700; }
+.dojo h2 { font-size: 1.1rem; color: var(--dojo-muted); }
+.dojo-status { font-size: .8rem; text-transform: uppercase; padding: .25rem .6rem; border-radius: 999px; border: 1px solid currentColor; }
+.dojo-status.is-connected { color: var(--dojo-accent); }
+.dojo-status.is-connecting { color: var(--dojo-muted); }
+.dojo-status.is-disconnected { color: var(--dojo-err); }
+.dojo-error { color: var(--dojo-err); font-size: .9rem; }
+.dojo-btn { min-height: 3rem; padding: 0 1.25rem; border-radius: 8px; background: var(--dojo-accent); color: var(--dojo-bg); font-weight: 700; font-size: 1rem; cursor: pointer; }
+.dojo-btn.is-ghost { background: transparent; color: var(--dojo-fg); border: 1px solid oklch(1 0 0 / 30%); }
+.dojo-btn:focus-visible { outline: 3px solid var(--dojo-fg); outline-offset: 2px; }
+.dojo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr)); gap: .5rem; }
+.dojo-grid li { padding: .5rem; text-align: center; border: 1px solid oklch(1 0 0 / 15%); border-radius: 6px; }
+.dojo-step { color: var(--dojo-muted); }
+.dojo .dojo-target { font-size: 3rem; color: var(--dojo-fg); text-align: center; }
+.dojo-ref { aspect-ratio: 4/3; display: grid; place-items: center; border: 1px dashed oklch(1 0 0 / 25%); border-radius: 8px; color: var(--dojo-muted); font-size: 1.5rem; }
+.dojo-msg { text-align: center; font-size: 1.1rem; }
+.dojo-msg.is-ok { color: var(--dojo-accent); font-weight: 700; }
+.dojo-bar { height: .75rem; background: oklch(1 0 0 / 10%); border-radius: 999px; overflow: hidden; }
+.dojo-bar > div { height: 100%; background: var(--dojo-accent); transition: width .1s linear; }
+.dojo-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; text-align: center; }
+.dojo-stats dt { font-size: .8rem; color: var(--dojo-muted); }
+.dojo-stats dd { font-size: 1.25rem; font-weight: 700; }
+.dojo-row { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+.dojo-preview { width: 10rem; align-self: flex-end; border-radius: 6px; border: 1px solid oklch(1 0 0 / 20%); }
