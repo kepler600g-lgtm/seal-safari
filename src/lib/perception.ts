@@ -39,21 +39,21 @@ const strOrNull = (v: unknown) => v === null || typeof v === "string";
 function parseRecognition(v: Record<string, unknown>): RecognitionMessage | null {
   const nums = ["t", "hold", "raw_score", "expect_score", "expect_thr", "hands", "fps"] as const;
   if (!nums.every((k) => typeof v[k] === "number")) return null;
-  if (!strOrNull(v.stable_seal) || !strOrNull(v.raw) || !strOrNull(v.expect)) return null;
-  if (typeof v.new_confirm !== "boolean" || typeof v.armed !== "boolean") return null;
+  if (!strOrNull(v["stable_seal"]) || !strOrNull(v["raw"]) || !strOrNull(v["expect"])) return null;
+  if (typeof v["new_confirm"] !== "boolean" || typeof v["armed"] !== "boolean") return null;
   return {
-    t: v.t as number,
-    stable_seal: v.stable_seal as string | null,
-    hold: v.hold as number,
-    new_confirm: v.new_confirm,
-    raw: v.raw as string | null,
-    raw_score: v.raw_score as number,
-    expect: v.expect as string | null,
-    expect_score: v.expect_score as number,
-    expect_thr: v.expect_thr as number,
-    armed: v.armed,
-    hands: v.hands as number,
-    fps: v.fps as number,
+    t: v["t"] as number,
+    stable_seal: v["stable_seal"] as string | null,
+    hold: v["hold"] as number,
+    new_confirm: v["new_confirm"],
+    raw: v["raw"] as string | null,
+    raw_score: v["raw_score"] as number,
+    expect: v["expect"] as string | null,
+    expect_score: v["expect_score"] as number,
+    expect_thr: v["expect_thr"] as number,
+    armed: v["armed"],
+    hands: v["hands"] as number,
+    fps: v["fps"] as number,
   };
 }
 
@@ -93,8 +93,8 @@ export function createWebSocketPerception(url: string, ev: PerceptionEvents): Pe
         return;
       }
       if (!isObj(data)) return;
-      if (data.type === "frame" && typeof data.jpg === "string") {
-        ev.onPreview({ type: "frame", jpg: data.jpg });
+      if (data["type"] === "frame" && typeof data["jpg"] === "string") {
+        ev.onPreview({ type: "frame", jpg: data["jpg"] });
         return;
       }
       const m = parseRecognition(data);

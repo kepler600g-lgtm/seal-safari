@@ -41,7 +41,7 @@ function App() {
   const targetRef = useRef<string | null>(null);
   const confirmedRef = useRef(false);
 
-  const target = mode === "lesson" ? LESSON[step] : null;
+  const target: string | null = mode === "lesson" ? (LESSON[step] ?? null) : null;
 
   useEffect(() => {
     const p = createWebSocketPerception(WS_URL, {
